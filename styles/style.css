@@ -1,5 +1,51 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+:root { font-size: var(--font-size-base); color-scheme: dark; }
 
-.page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+.main { padding-block: var(--page-padding-block); }
+
+.intro__title { font-size: 1.5rem; margin-block-end: .5rem; }
+.intro__text { color: var(--muted); }
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-block-start: 1rem;
 }
+.gallery__grid img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+.notes { margin-block-start: 2rem; }
+.notes__title { font-size: 1.25rem; margin-block-end: .5rem; }
+.notes__text { display: block; margin-block-end: .75rem; }
+
+a { text-decoration: none; text-shadow: var(--link-shadow); }
+a:focus-visible { outline: 2px dashed var(--accent-color); }
+
+.footer { padding-block: 2rem; position: relative; }
+.footer__title { font-size: 1rem; margin-block-end: .5rem; }
+.footer__text { color: var(--muted); }
+
+.decorated-zone { position: relative; }
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  width: 36px; height: 36px;
+  border-left: 3px solid rgba(255,255,255,0.06);
+  border-bottom: 3px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+}
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 24px; height: 24px;
+  border-top: 3px solid rgba(255,255,255,0.06);
+  border-right: 3px solid rgba(255,255,255,0.06);
+}
+
+
+@media (min-width: 768px) {
+.header__inner { grid-template-columns: 1fr 300px; }
+.gallery__grid
