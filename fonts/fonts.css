@@ -1,21 +1,23 @@
 @font-face {
-  font-family: 'IBM Plex mono';
-  src: url('../fonts/IBMPlexMono-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.woff2') format('woff2'),
+         url('../fonts/Inter-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'IBM Plex mono';
-  src: url('../fonts/IBMPlexMono-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: bold;
-  font-display: swap;
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Medium.woff2') format('woff2'),
+         url('../fonts/Inter-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
 }
 
-:root {
-  --ui-font: 'IBM Plex mono', monospace;
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Bold.woff2') format('woff2'),
+         url('../fonts/Inter-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
 }
-
-html { font-family: var(--ui-font); }
