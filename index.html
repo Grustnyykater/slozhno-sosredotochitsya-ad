@@ -4,37 +4,98 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light">
     <title>Сложно сосредоточиться</title>
-    <script src="./scripts/script.js"></script>
+
+    <!-- Шрифты и глобальные стили -->
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/globals.css">
+
+    <!-- Переменные и основные стили (mobile-first) -->
+    <link rel="stylesheet" href="./styles/variables.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Точные переопределения тем (кнопки переключают эти классы на <html>) -->
+    <link rel="stylesheet" href="./styles/dark.css">
+    <link rel="stylesheet" href="./styles/light.css">
+
+    <script defer src="./scripts/script.js"></script>
   </head>
   <body class="page">
     <header class="header decorated-zone">
-      <nav class="header__theme-menu">
-        <ul class="header__theme-menu-list">
-          <li class="header__theme-menu-item">
-            <button
-              class="header__theme-menu-button header__theme-menu-button_type_light"
-            >
-              День
-            </button>
-          </li>
-          <li class="header__theme-menu-item">
-            <button
-              class="header__theme-menu-button header__theme-menu-button_active header__theme-menu-button_type_auto"
-              disabled
-            >
-              Авто
-            </button>
-          </li>
-          <li class="header__theme-menu-item">
-            <button
-              class="header__theme-menu-button header__theme-menu-button_type_dark"
-            >
-              Неон
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <div class="header__inner">
+        <h1 class="header__title">Сложно<br>сосредоточиться</h1>
+
+        <p class="header__lead title-decor">Проектная работа — адаптивная в двух темах</p>
+
+        <div class="header__rec" aria-hidden="true">REC</div>
+
+        <nav class="header__theme-menu" aria-label="Выбор темы">
+          <ul class="header__theme-menu-list">
+            <li class="header__theme-menu-item">
+              <button
+                class="header__theme-menu-button header__theme-menu-button_type_light"
+                data-theme="light"
+              >
+                День
+              </button>
+            </li>
+            <li class="header__theme-menu-item">
+              <button
+                class="header__theme-menu-button header__theme-menu-button_type_auto header__theme-menu-button_active"
+                data-theme="auto"
+                disabled
+              >
+                Авто
+              </button>
+            </li>
+            <li class="header__theme-menu-item">
+              <button
+                class="header__theme-menu-button header__theme-menu-button_type_dark"
+                data-theme="dark"
+              >
+                Неон
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
+
+    <main class="main content">
+      <section class="intro">
+        <div class="container">
+          <h2 class="intro__title title-decor">О проекте</h2>
+          <p class="intro__text">В этой проектной работе вы сверстаете адаптивный сайт с тёмной и светлой темами, используя CSS-переменные, гриды и подход mobile-first.</p>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <div class="container">
+          <h3 class="gallery__title">Галерея</h3>
+          <div class="gallery__grid">
+            <img src="./images/photo-1.jpg" alt="Фото 1: интерьер" loading="lazy">
+            <img src="./images/photo-2.jpg" alt="Фото 2: рабочее место" loading="lazy">
+            <img src="./images/photo-3.jpg" alt="Фото 3: ноутбук" loading="lazy">
+            <img src="./images/photo-4.jpg" alt="Фото 4: чашка кофе" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <section class="notes">
+        <div class="container">
+          <h3 class="notes__title">Запись</h3>
+          <p class="notes__text title-decor">Короткая заметка, выделенная цветом — повторяемый декоративный приём.</p>
+          <p>Тут обычный текст. Ссылки <a href="#">с тенью</a> и состояния: <a href="#">hover</a>, <a href="#">focus</a>.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer decorated-zone">
+      <div class="container footer__inner">
+        <h4 class="footer__title">Контакты</h4>
+        <p class="footer__text">© 2025 — Проектная работа. Все права защищены.</p>
+      </div>
+    </footer>
   </body>
 </html>
