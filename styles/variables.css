@@ -1,12 +1,19 @@
 :root {
   --background-color: #000028;
-  --bg-image: url("../images/cover-image-dark.png");
+  --bg-image: url("../images/bg-dark.jpg");
+  --page-padding-mobile: 24px;
   --text-color: #f1b2ce;
-  --subtitle-color: #000028;
+  --muted-color: #d8cbd6;
   --accent-color: #ff0070;
   --title-color: #db00ff;
-  --border-color: #ff0070;
-  --decor-color: #ff0070;
+  --subtitle-color: #000028;
+  --card-bg: rgba(255,255,255,0.02);
   --title-shadow: 4px 4px 0 #ff0070;
-  --link-shadow: 2px 2px 0 #ff0070;
+  --link-shadow: 2px 2px 0 rgba(255,0,112,0.35);
+  --gap-xs: 8px;
+  --gap-sm: 16px;
+  --gap-md: 24px;
+  --radius: 10px;
+  --font-size-base: 16px;
+  --line-height-base: 1.4;
 }
