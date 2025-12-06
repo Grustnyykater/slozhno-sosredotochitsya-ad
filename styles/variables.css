@@ -1,12 +1,15 @@
 :root {
-  --background-color: #000028;
-  --text-color: #f1b2ce;
-  --title-color: #db00ff;
-  --accent-color: #ff0070;
-  --decor-color: #ff0070;
-  
+  --background-color: #000028; 
   --bg-image: url("../images/cover-image-dark.png");
 
-  --button-hover: rgba(255, 0, 112, 0.4);
+  --text-color: #f1b2ce;       
+  --subtitle-color: #000028;    
+  --accent-color: #ff0070;    
+  --title-color: #db00ff;      
+
   --border-color: #ff0070;
+  --decor-color: #ff0070;
+  
+  --title-shadow: 4px 4px 0 #ff0070;
+  --link-shadow: 2px 2px 0 #ff0070;
 }
