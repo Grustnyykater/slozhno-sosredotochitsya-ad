@@ -1,44 +1,50 @@
 (() => {
-  // Скрипт переключения тем: добавляет класс на <html>
-  const btns = Array.from(document.querySelectorAll('.header__theme-menu-button'));
   const html = document.documentElement;
+  const buttons = Array.from(document.querySelectorAll('.header__theme-menu-button'));
 
-  function setActive(button) {
-    btns.forEach(b => {
-      b.classList.remove('header__theme-menu-button_active');
-      b.disabled = false;
-      b.style.pointerEvents = '';
+  function setActiveButton(activeBtn) {
+    buttons.forEach(btn => {
+      btn.classList.remove('header__theme-menu-button_active');
+      btn.disabled = false;
+      btn.style.pointerEvents = '';
     });
-    if (button) {
-      button.classList.add('header__theme-menu-button_active');
-      button.disabled = true;
-      button.style.pointerEvents = 'none';
+
+    if (activeBtn) {
+      activeBtn.classList.add('header__theme-menu-button_active');
+      activeBtn.disabled = true;
+      activeBtn.style.pointerEvents = 'none';
     }
   }
 
   function applyTheme(kind) {
     html.classList.remove('theme-light', 'theme-dark', 'theme-auto');
+
     if (kind === 'light') html.classList.add('theme-light');
     else if (kind === 'dark') html.classList.add('theme-dark');
-    else if (kind === 'auto') html.classList.add('theme-auto');
+    else if (kind === 'auto') {
+      html.classList.add('theme-auto');
+      // sync with prefers-color-scheme
+      const mq = window.matchMedia('(prefers-color-scheme: light)');
+      if (mq.matches) html.classList.add('theme-light');
+      else html.classList.remove('theme-light');
+    }
   }
 
-  // Инициализация: авто по умолчанию
+  // init: auto
   applyTheme('auto');
 
-  btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
       const kind = btn.dataset.theme;
       applyTheme(kind);
-      setActive(btn);
+      setActiveButton(btn);
     });
   });
 
-  // Если пользователь вернул авто, нужно слушать prefers-color-scheme
+  // update when system preference changes and html has theme-auto
   const mq = window.matchMedia('(prefers-color-scheme: light)');
   mq.addEventListener?.('change', () => {
     if (html.classList.contains('theme-auto')) {
-      // перестановка классов для демонстрации — переменные в light.css применятся
       if (mq.matches) html.classList.add('theme-light');
       else html.classList.remove('theme-light');
     }
