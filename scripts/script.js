@@ -1,52 +1,48 @@
-(() => {
-  const html = document.documentElement;
-  const buttons = Array.from(document.querySelectorAll('.header__theme-menu-button'));
+const themeButtons = document.querySelectorAll('.header__theme-menu-button');
 
-  function setActiveButton(activeBtn) {
-    buttons.forEach(btn => {
+themeButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    themeButtons.forEach((btn) => {
       btn.classList.remove('header__theme-menu-button_active');
-      btn.disabled = false;
-      btn.style.pointerEvents = '';
+      btn.removeAttribute('disabled');
     });
-
-    if (activeBtn) {
-      activeBtn.classList.add('header__theme-menu-button_active');
-      activeBtn.disabled = true;
-      activeBtn.style.pointerEvents = 'none';
+    if (
+      [...button.classList].includes('header__theme-menu-button_type_light')
+    ) {
+      changeTheme('light');
+    } else if (
+      [...button.classList].includes('header__theme-menu-button_type_dark')
+    ) {
+      changeTheme('dark');
+    } else {
+      changeTheme('auto');
     }
-  }
+    button.classList.add('header__theme-menu-button_active');
+    button.setAttribute('disabled', true);
+  });
+});
 
-  function applyTheme(kind) {
-    html.classList.remove('theme-light', 'theme-dark', 'theme-auto');
+function changeTheme(theme) {
+  document.body.className = 'page';
+  document.body.classList.add(`theme_${theme}`);
+  localStorage.setItem('theme', theme);
+}
 
-    if (kind === 'light') html.classList.add('theme-light');
-    else if (kind === 'dark') html.classList.add('theme-dark');
-    else if (kind === 'auto') {
-      html.classList.add('theme-auto');
-      // sync with prefers-color-scheme
-      const mq = window.matchMedia('(prefers-color-scheme: light)');
-      if (mq.matches) html.classList.add('theme-light');
-      else html.classList.remove('theme-light');
-    }
-  }
-
-  // init: auto
-  applyTheme('auto');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const kind = btn.dataset.theme;
-      applyTheme(kind);
-      setActiveButton(btn);
+function initTheme() {
+  const theme = localStorage.getItem('theme');
+  if (theme) {
+    changeTheme(theme);
+    themeButtons.forEach((btn) => {
+      btn.classList.remove('header__theme-menu-button_active');
+      btn.removeAttribute('disabled');
     });
-  });
+    document
+      .querySelector(`.header__theme-menu-button_type_${theme}`)
+      .classList.add('header__theme-menu-button_active');
+    document
+      .querySelector(`.header__theme-menu-button_type_${theme}`)
+      .setAttribute('disabled', true);
+  }
+}
 
-  // update when system preference changes and html has theme-auto
-  const mq = window.matchMedia('(prefers-color-scheme: light)');
-  mq.addEventListener?.('change', () => {
-    if (html.classList.contains('theme-auto')) {
-      if (mq.matches) html.classList.add('theme-light');
-      else html.classList.remove('theme-light');
-    }
-  });
-})();
+initTheme();
