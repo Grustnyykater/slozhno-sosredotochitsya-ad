@@ -1,4 +1,11 @@
+:root {
+  font-family: 'IBM Plex mono', monospace;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
 .page {
+  min-height: 100vh;
   background-color: var(--background-color);
   background-image: var(--bg-image);
   background-position: center;
@@ -7,43 +14,206 @@
   color: var(--text-color);
 }
 
+.header {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px 10px;
+}
+
+.header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: space-between;
+  min-height: calc(100vh - 40px);
+}
+
+.header__title {
+  color: var(--title-color);
+  font-weight: 700;
+  line-height: 0.8;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: var(--title-shadow);
+}
+
+.header__lead {
+  max-width: 355px;
+  margin-top: 40px;
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--subtitle-color);
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+/* Кнопки тем */
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.header__theme-menu-button {
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 2px 12px;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid var(--accent-color);
+  pointer-events: none;
+}
+
+
+.header__rec {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  color: var(--accent-color);
+}
+
+.header__rec::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+}
+
+.main {
+  padding: 40px 10px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section__title {
+  font-size: 18px;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.section__text {
+  font-size: 16px;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+
+a {
+  color: var(--text-color);
+  text-shadow: var(--link-shadow);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 1px solid var(--accent-color);
+}
+
 .gallery {
-    width: 100%;
-    padding: 32px 16px;
+  margin-top: 50px;
 }
 
 .gallery__title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
+  font-size: 18px;
+  color: var(--accent-color);
+  margin-bottom: 10px;
 }
 
 .gallery__grid {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 1fr;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
 }
 
-.gallery__item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 12px;
-    background-color: var(--card-color);
-    border-radius: 12px;
+.gallery__grid img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
-.gallery__item-image {
-    width: 100%;
-    border-radius: 8px;
+.footer {
+  position: relative;
+  min-height: 100vh;
+  padding: 20px 10px;
+  display: grid;
+  place-items: center;
 }
 
-.gallery__item-title {
-    font-size: 18px;
-    font-weight: 600;
+.footer__title {
+  color: var(--title-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: var(--title-shadow);
 }
 
-.gallery__item-text {
-    font-size: 14px;
-    line-height: 1.4;
+@media (min-width: 768px) {
+  .header {
+    padding: 20px;
+  }
+
+  .main {
+    padding: 60px 20px;
+  }
+
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
