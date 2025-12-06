@@ -4,18 +4,10 @@
   box-sizing: border-box;
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
+  margin: 0 auto;
   min-inline-size: 375px;
   max-inline-size: 1440px;
-  margin: 0 auto;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -45,20 +37,8 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  background: none;
-  border: none;
-  padding: 0;
-  text-decoration: none;
 }
 
-.container {
-  padding-inline: 16px;
-  margin-inline: auto;
-  max-width: 1100px;
-}
-
-.title-decor {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 8px;
+.page {
+  font-family: var(--main-font), sans-serif;
 }
